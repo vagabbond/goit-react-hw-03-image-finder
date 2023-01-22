@@ -62,9 +62,11 @@ export class App extends Component {
       <>
         <SearchBar onSubmit={this.onSubmit}></SearchBar>
         {status === 'rejected' && <h1>Something went wrong</h1>}
+        {this.state.images.length > 0 && (
+          <Gallery images={this.state.images} onClick={this.openModal} />
+        )}
         {status === 'resolved' && (
           <>
-            <Gallery images={this.state.images} onClick={this.openModal} />
             {status === 'pending' ? (
               <ColorRing
                 visible={true}
