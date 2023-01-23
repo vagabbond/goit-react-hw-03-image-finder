@@ -65,22 +65,19 @@ export class App extends Component {
         {this.state.images.length > 0 && (
           <Gallery images={this.state.images} onClick={this.openModal} />
         )}
-        {status === 'resolved' && (
-          <>
-            {status === 'pending' ? (
-              <ColorRing
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
-                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-              />
-            ) : (
-              <Button onClick={this.onClick} />
-            )}
-          </>
+        {status === 'pending' && (
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+          />
+        )}
+        {status === 'resolved' && this.state.images.length > 0 && (
+          <Button onClick={this.onClick} />
         )}
         {this.state.largeImg && (
           <Modal
